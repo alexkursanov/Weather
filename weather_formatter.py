@@ -9,3 +9,14 @@ def format_weather(weather: Weather)-> str:
             f"Восход {str(weather.sunrise.time())}, "
             f"закат {str(weather.sunset.time())}."
     )
+
+if __name__ == "__main__":
+    from datetime import datetime
+    print(format_weather(Weather(temperature = 0.0,
+                           feels_like = 0.0,
+                           pressure = 0.0,
+                           humidity = 0,
+                           weather_type ='ясно',
+                           sunrise = datetime.fromisoformat('2024-12-07 04:00:00'),
+                           sunset = datetime.fromisoformat('2024-12-07 20:00:00'))
+                   ))
