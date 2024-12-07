@@ -1,3 +1,7 @@
+from coordinates import get_gps_coordinates
+from weather_api_service import get_wether
+from weather_formatter import format_weather
+from history import save_weather
 
 def main():
     coordinates = get_gps_coordinates()
