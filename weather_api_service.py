@@ -5,7 +5,7 @@ from typing_extensions import TypeAlias
 from datetime import datetime
 
 from coordinates import Coordinates
-
+import config
 
 Celsius: TypeAlias = float
 
@@ -20,11 +20,10 @@ class Weather:
   sunset: datetime
 
 def get_wether(coordinates: Coordinates) -> Weather:
-    lat = coordinates.latitude
-    lon = coordinates.longitude
-    api_key = "cbd447f1ff08f9019d7f646614bc17d0"
-    url = f"https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={api_key}&units=metric&lang=ru"
-    weather_from_api_json = urllib.request.urlopen(url).read()
+    latitude = coordinates.latitude
+    longitude = coordinates.longitude
+    weather_from_api_json = urllib.request.urlopen(
+        config.OPENWEATHER_URL.format(latitude=latitude, longitude=longitude)).read()
     weather_from_api_dict = json.loads(weather_from_api_json)
     temperature = weather_from_api_dict['main']['temp']
     weather_type = weather_from_api_dict['weather'][0]['description']
