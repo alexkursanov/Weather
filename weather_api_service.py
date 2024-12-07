@@ -29,7 +29,7 @@ def get_wether(coordinates: Coordinates) -> Weather:
     temperature = weather_from_api_dict['main']['temp']
     weather_type = weather_from_api_dict['weather'][0]['description']
     feels_like = weather_from_api_dict['main']['feels_like']
-    pressure = weather_from_api_dict['main']['pressure']
+    pressure = weather_from_api_dict['main']['pressure']*0.750062
     humidity = weather_from_api_dict['main']['humidity']
     sunrise = datetime.fromtimestamp(weather_from_api_dict['sys']['sunrise'])
     sunset = datetime.fromtimestamp(weather_from_api_dict['sys']['sunset'])
